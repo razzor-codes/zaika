@@ -2,7 +2,7 @@ import '../styles/VideoShowcase.css';
 
 export default function VideoShowcase() {
   return (
-    <section className="video-showcase">
+    <section id="about" className="video-showcase">
 
       {/* ── LEFT: text panel ── */}
       <div className="video-text-panel">

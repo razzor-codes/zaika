@@ -1,7 +1,7 @@
 .menu-section {
   width: 100%;
   padding: 7rem 0;
-  background: var(--bg-primary);
+  background: rgba(255, 250, 244, 0.72);
   position: relative;
 }
 
@@ -20,6 +20,13 @@
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+.menu-heading {
+  text-align: center;
+  margin-bottom: 2.5rem;
 }
 
 .menu-section h2 {
@@ -43,7 +50,35 @@
   text-align: center;
   color: var(--text-secondary);
   font-size: 1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 0;
+  line-height: 1.7;
+}
+
+.menu-preview-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.menu-preview-card {
+  padding: 1.35rem 1.4rem;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(120, 80, 40, 0.08);
+  box-shadow: 0 18px 35px rgba(60, 30, 10, 0.06);
+}
+
+.menu-preview-card strong {
+  display: block;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+}
+
+.menu-preview-card span {
+  color: var(--text-muted);
+  font-size: 0.84rem;
   line-height: 1.6;
 }
 
@@ -51,18 +86,18 @@
   display: flex;
   justify-content: center;
   gap: 0.5rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
   flex-wrap: wrap;
 }
 
 .category-btn {
-  background: var(--bg-secondary);
+  background: rgba(255, 255, 255, 0.72);
   border: 1.5px solid var(--border);
   color: var(--text-secondary);
-  padding: 0.6rem 1.4rem;
+  padding: 0.7rem 1.4rem;
   border-radius: 100px;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 700;
   transition: var(--transition-fast);
   font-size: 0.875rem;
   letter-spacing: 0.3px;
@@ -75,10 +110,40 @@
 }
 
 .category-btn.active {
-  background: var(--primary);
-  border-color: var(--primary);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  border-color: transparent;
   color: white;
-  box-shadow: 0 4px 12px rgba(37,99,235,0.3);
+  box-shadow: 0 12px 24px rgba(196, 92, 16, 0.2);
+}
+
+.menu-active-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+  padding: 1rem 1.2rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(120, 80, 40, 0.08);
+}
+
+.menu-active-label {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(26, 13, 5, 0.92);
+  color: #fff4e8;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.menu-active-summary p {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
 }
 
 .menu-items {
@@ -88,10 +153,11 @@
 }
 
 .menu-item {
-  background: var(--bg-secondary);
+  background: rgba(255, 255, 255, 0.84);
   border: 1.5px solid var(--border);
   padding: 1.5rem;
-  border-radius: var(--radius-md);
+  padding-top: 2.3rem;
+  border-radius: 22px;
   transition: var(--transition);
   position: relative;
   overflow: hidden;
@@ -100,7 +166,9 @@
 .menu-item::before {
   content: '';
   position: absolute;
-  left: 0; top: 0; bottom: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
   width: 3px;
   background: linear-gradient(to bottom, #e07b39, #c9950c);
   opacity: 0;
@@ -114,7 +182,19 @@
   transform: translateY(-4px);
 }
 
-.menu-item:hover::before { opacity: 1; }
+.menu-item:hover::before {
+  opacity: 1;
+}
+
+.menu-item-index {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  color: rgba(26, 13, 5, 0.28);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
 
 .menu-item-header {
   display: flex;
@@ -149,18 +229,38 @@
 
 .menu-description {
   color: var(--text-muted);
-  font-size: 0.85rem;
-  line-height: 1.5;
+  font-size: 0.86rem;
+  line-height: 1.6;
   margin: 0;
 }
 
 @media (max-width: 1024px) {
-  .menu-items { grid-template-columns: repeat(2, 1fr); }
+  .menu-preview-cards,
+  .menu-items {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
-  .menu-section { padding: 4rem 0; }
-  .menu-section .container { padding: 0 1.5rem; }
-  .menu-section h2 { font-size: 2rem; }
-  .menu-items { grid-template-columns: 1fr; }
+  .menu-section {
+    padding: 4rem 0;
+  }
+
+  .menu-section .container {
+    padding: 0 1.5rem;
+  }
+
+  .menu-section h2 {
+    font-size: 2rem;
+  }
+
+  .menu-preview-cards,
+  .menu-items {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-active-summary {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
