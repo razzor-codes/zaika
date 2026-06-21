@@ -21,6 +21,7 @@ export default function Header() {
               <p>THE TASTE OF HIMALAYA</p>
             </div>
           </div>
+          <span className="header-location">Itabashi, Tokyo</span>
         </div>
 
         <button 
@@ -41,6 +42,8 @@ export default function Header() {
             <li><button onClick={() => scrollToSection('contact')}>Contact</button></li>
           </ul>
         </nav>
+
+        <a className="header-cta" href="tel:0363170037">Reserve / Call</a>
       </div>
     </header>
   );

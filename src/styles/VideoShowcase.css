@@ -163,9 +163,85 @@
 }
 
 @media (max-width: 768px) {
-  .video-showcase { grid-template-rows: auto 280px; }
-  .video-text-panel { padding: 3rem 1.5rem; }
+  .video-showcase {
+    grid-template-columns: minmax(0, 1fr) minmax(168px, 0.96fr);
+    grid-template-rows: minmax(420px, auto);
+  }
+  .video-text-panel {
+    padding: 2.8rem 1rem 2.8rem 1.25rem;
+  }
   .video-title { font-size: 2.2rem; }
-  .video-stats { flex-wrap: wrap; gap: 1rem; padding: 1rem 1.25rem; }
+  .video-subtitle {
+    font-size: 0.98rem;
+    max-width: 18rem;
+    margin-bottom: 2rem;
+  }
+  .video-stats {
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    padding: 1rem 1.1rem;
+    max-width: 17rem;
+  }
   .vstat-divider { display: none; }
+  .video-panel {
+    min-height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+      linear-gradient(to right, rgba(26, 13, 5, 0.96) 0%, rgba(26, 13, 5, 0.78) 18%, rgba(26, 13, 5, 0.26) 38%, transparent 62%),
+      #120802;
+  }
+  .showcase-video {
+    position: relative;
+    inset: auto;
+    width: min(100%, 250px);
+    height: auto;
+    aspect-ratio: 9 / 16;
+    object-fit: contain;
+    background: #120802;
+    margin-left: -0.85rem;
+  }
+  .video-panel-fade {
+    background: linear-gradient(to right, #1a0d05 0%, rgba(26, 13, 5, 0.94) 18%, rgba(26, 13, 5, 0.45) 38%, transparent 72%);
+  }
+}
+
+@media (max-width: 560px) {
+  .video-showcase {
+    grid-template-columns: minmax(0, 1fr) 172px;
+    grid-template-rows: minmax(380px, auto);
+  }
+  .video-text-panel {
+    padding: 2.4rem 1rem;
+  }
+  .video-title {
+    font-size: 1.8rem;
+  }
+  .video-subtitle {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    max-width: 14rem;
+  }
+  .video-stats {
+    gap: 0.75rem;
+    padding: 0.9rem 1rem;
+    max-width: 13rem;
+  }
+  .vstat-num {
+    font-size: 0.82rem;
+  }
+  .vstat-label {
+    font-size: 0.7rem;
+  }
+  .video-panel {
+    min-height: 380px;
+  }
+  .showcase-video {
+    width: min(100%, 192px);
+    margin-left: -1rem;
+  }
+  .video-panel-fade {
+    background: linear-gradient(to right, #1a0d05 0%, rgba(26, 13, 5, 0.95) 24%, rgba(26, 13, 5, 0.42) 48%, transparent 100%);
+  }
 }

@@ -1,10 +1,18 @@
 import { useState } from 'react';
 import '../styles/Menu.css';
 
+interface MenuEntry {
+  name: string;
+  nameJa: string;
+  description: string;
+  price: string;
+}
+
 interface MenuItem {
   category: string;
   label: string;
-  items: Array<{ name: string; nameJa: string; description: string; price: string }>;
+  summary: string;
+  items: MenuEntry[];
 }
 
 export default function Menu() {
@@ -14,6 +22,7 @@ export default function Menu() {
     {
       category: 'curry',
       label: 'Curry カレー',
+      summary: 'Slow-simmered classics with layered Himalayan spice.',
       items: [
         { name: 'Mutton Curry', nameJa: 'マトンカレー', description: 'Slow-cooked mutton in a rich, classic Indian curry sauce', price: '¥885' },
         { name: 'Sag Mutton', nameJa: 'ほうれん草マトン', description: 'Tender mutton in a vibrant spinach-based curry', price: '¥930' },
@@ -29,6 +38,7 @@ export default function Menu() {
     {
       category: 'lunch',
       label: 'Lunch ランチ',
+      summary: 'Weekday-friendly sets that make lunch easy and satisfying.',
       items: [
         { name: "Today's Curry Set", nameJa: '日替わりカレー', description: '1 curry + naan or rice + salad + soft drink', price: '¥750' },
         { name: 'Chicken Curry Set', nameJa: 'チキンカレー', description: '1 curry + naan or rice + salad + soft drink', price: '¥750' },
@@ -48,6 +58,7 @@ export default function Menu() {
     {
       category: 'naan',
       label: 'Naan ナン',
+      summary: 'Fresh tandoor breads that complete the table.',
       items: [
         { name: 'Plain Naan', nameJa: 'プレーンナン', description: 'Classic soft leavened bread, baked fresh in our tandoor', price: 'Set incl.' },
         { name: 'Garlic Naan', nameJa: 'ガーリックナン', description: 'Tandoor bread topped with fragrant garlic butter', price: '+¥200' },
@@ -57,13 +68,33 @@ export default function Menu() {
     }
   ];
 
+  const activeMenu = menuItems.find((menu) => menu.category === activeCategory);
+
   return (
     <section id="menu" className="menu-section">
       <div className="container">
-        <h2>Our <span>Menu</span></h2>
-        <p className="section-subtitle">
-          Explore our diverse selection of authentic dishes
-        </p>
+        <div className="menu-heading">
+          <span className="section-tag">Menu Highlights</span>
+          <h2>Our <span>Menu</span></h2>
+          <p className="section-subtitle">
+            Explore our most-loved curries, flexible lunch sets, and fresh-baked naan.
+          </p>
+        </div>
+
+        <div className="menu-preview-cards">
+          <div className="menu-preview-card">
+            <strong>Lunch sets from ¥750</strong>
+            <span>Ideal for quick weekday meals without compromising flavour.</span>
+          </div>
+          <div className="menu-preview-card">
+            <strong>Family-friendly portions</strong>
+            <span>Comforting classics that work for solo visits or shared tables.</span>
+          </div>
+          <div className="menu-preview-card">
+            <strong>Delivery ready</strong>
+            <span>Order Zaika through Uber Eats or Demae-can when you stay in.</span>
+          </div>
+        </div>
 
         <div className="menu-categories">
           {menuItems.map(menuCategory => (
@@ -77,22 +108,30 @@ export default function Menu() {
           ))}
         </div>
 
-        <div className="menu-items">
-          {menuItems
-            .find(m => m.category === activeCategory)
-            ?.items.map((item, index) => (
-              <div key={index} className="menu-item">
-                <div className="menu-item-header">
-                  <div>
-                    <h4>{item.name}</h4>
-                    <span className="menu-item-ja">{item.nameJa}</span>
+        {activeMenu && (
+          <>
+            <div className="menu-active-summary">
+              <span className="menu-active-label">Currently viewing</span>
+              <p>{activeMenu.summary}</p>
+            </div>
+
+            <div className="menu-items">
+              {activeMenu.items.map((item, index) => (
+                <div key={index} className="menu-item">
+                  <span className="menu-item-index">{String(index + 1).padStart(2, '0')}</span>
+                  <div className="menu-item-header">
+                    <div>
+                      <h4>{item.name}</h4>
+                      <span className="menu-item-ja">{item.nameJa}</span>
+                    </div>
+                    <span className="menu-price">{item.price}</span>
                   </div>
-                  <span className="menu-price">{item.price}</span>
+                  <p className="menu-description">{item.description}</p>
                 </div>
-                <p className="menu-description">{item.description}</p>
-              </div>
-            ))}
-        </div>
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </section>
   );
