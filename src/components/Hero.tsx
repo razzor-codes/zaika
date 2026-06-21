@@ -1,6 +1,8 @@
 import '../styles/Hero.css';
 
 export default function Hero() {
+  const heroDishImage = `${import.meta.env.BASE_URL}images/dishes/mutton_masala.jpg`;
+
   return (
     <section id="home" className="hero">
       <div className="hero-particles">
@@ -53,7 +55,12 @@ export default function Hero() {
             <div className="hero-card hero-card-behind"></div>
             <div className="hero-card hero-card-behind2"></div>
             <div className="hero-card hero-card-main">
-              <div className="hero-card-img"></div>
+              <div
+                className="hero-card-img"
+                style={{
+                  backgroundImage: `linear-gradient(180deg, transparent 48%, rgba(20, 10, 4, 0.6) 100%), url(${heroDishImage})`
+                }}
+              ></div>
               <div className="hero-card-body">
                 <div className="hero-card-eyebrow">Chef's Signature</div>
                 <h4>Mutton Masala</h4>

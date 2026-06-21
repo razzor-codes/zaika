@@ -13,13 +13,14 @@ interface Dish {
 
 export default function DishGallery() {
   const [selectedDish, setSelectedDish] = useState<Dish | null>(null);
+  const dishImagePath = (fileName: string) => `${import.meta.env.BASE_URL}images/dishes/${fileName}`;
 
   const dishes: Dish[] = [
     {
       id: 1,
       name: 'Mutton Curry',
       description: 'Slow-cooked mutton in a rich, classic curry sauce — Zaika\'s most beloved dish',
-      image: '/images/dishes/mutton-curry.jpg',
+      image: dishImagePath('mutton_curry.jpg'),
       price: '¥885',
       spice: 'Comforting spice',
       tag: 'Best Seller'
@@ -28,7 +29,7 @@ export default function DishGallery() {
       id: 2,
       name: 'Paneer Makhani',
       description: 'House-made paneer in a velvety tomato-cream sauce, perfectly spiced',
-      image: '/images/dishes/paneer-makhani.jpg',
+      image: dishImagePath('paneer_makhani.jpg'),
       price: '¥890',
       spice: 'Creamy mild',
       tag: 'Vegetarian'
@@ -37,37 +38,64 @@ export default function DishGallery() {
       id: 3,
       name: 'Sag Mutton',
       description: 'Tender mutton simmered in a vibrant, nutrient-rich spinach curry',
-      image: '/images/dishes/sag-mutton.jpg',
+      image: dishImagePath('sag_mutton.jpg'),
       price: '¥930',
       spice: 'Deep savoury',
       tag: 'House Favourite'
     },
     {
       id: 4,
-      name: 'Dal Curry',
-      description: 'Four-lentil slow-simmered curry — a Himalayan comfort food staple',
-      image: '/images/dishes/dal-curry.jpg',
-      price: '¥730',
-      spice: 'Gentle warmth',
-      tag: 'Daily Comfort'
+      name: 'Butter Chicken Curry',
+      description: 'Creamy tomato-butter curry with tender chicken and a silky finish',
+      image: dishImagePath('butter_chicken_curry.jpg'),
+      price: '¥900',
+      spice: 'Creamy rich',
+      tag: 'Signature'
     },
     {
       id: 5,
       name: 'Mutton Masala',
       description: 'Mutton cooked with an abundance of aromatic whole spices, bold and fragrant',
-      image: '/images/dishes/mutton-masala.jpg',
+      image: dishImagePath('mutton_masala.jpg'),
       price: '¥940',
       spice: 'Bold spice',
       tag: 'Chef Signature'
     },
     {
       id: 6,
-      name: 'Sag Paneer',
-      description: 'Creamy spinach curry with house-made paneer cheese — a vegetarian favourite',
-      image: '/images/dishes/sag-paneer.jpg',
-      price: '¥880',
-      spice: 'Fresh & mellow',
-      tag: 'Vegetarian'
+      name: 'Tandoori Chicken',
+      description: 'Charred tandoori chicken, smoky and juicy with bold spice marinade',
+      image: dishImagePath('tandoori_chicken.jpg'),
+      price: '¥730',
+      spice: 'Smoky heat',
+      tag: 'From Tandoor'
+    },
+    {
+      id: 7,
+      name: 'Chicken Tikka',
+      description: 'Juicy grilled chicken tikka with crisp char and aromatic spice',
+      image: dishImagePath('chicken_tikka.jpg'),
+      price: '¥430',
+      spice: 'Grilled spice',
+      tag: 'Popular'
+    },
+    {
+      id: 8,
+      name: 'Mutton Chilli',
+      description: 'Spicy stir-fried mutton with peppers and a punchy masala finish',
+      image: dishImagePath('mutton_chilli.jpg'),
+      price: '¥940',
+      spice: 'Spicy kick',
+      tag: 'Hot Favourite'
+    },
+    {
+      id: 9,
+      name: 'Chicken Curry',
+      description: 'Classic chicken curry in a flavorful house gravy',
+      image: dishImagePath('chicken_curry.jpg'),
+      price: '¥760',
+      spice: 'Balanced',
+      tag: 'Classic'
     }
   ];
 
